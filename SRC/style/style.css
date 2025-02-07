@@ -9,6 +9,7 @@
 	list-style: none;
 }
 
+
 :root {
 	/* --bg-color: radial-gradient(circle at 60% 50%, rgba(238,174,202,1) 0%, rgb(127, 172, 224) 100%); */
 	--bg-color: radial-gradient(circle at 70% 50%, rgb(66, 196, 201) 0%, rgb(41, 117, 204) 100%);
