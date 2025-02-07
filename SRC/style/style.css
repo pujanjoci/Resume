@@ -1450,94 +1450,6 @@ header.scrolled {
 	background-color: var(--text-color);
 }
 
-/* Blog Section Styles */
-.career-main .career-section .blog-section {
-	margin-top: 50px;
-}
-
-.career-main .career-section .blog-section .blog-title {
-	font-size: 1.5rem;
-	font-weight: 600;
-	margin-bottom: 15px;
-	color: var(--main-color);
-}
-
-.career-main .career-section .blog-section .blog-post {
-	margin-bottom: 40px;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	background-color: #f9f9f991, blur(0.5s);
-}
-
-.career-main .career-section .blog-section .blog-summary {
-	font-size: 1.05rem;
-	font-weight: 400;
-	margin-bottom: 15px;
-	color: #333;
-}
-
-/* Enforcing 16:9 Aspect Ratio for Images */
-.career-main .career-section .blog-section .blog-image-container {
-	position: relative;
-	width: 100%;
-	padding-top: 56.25%; /* 16:9 aspect ratio */
-	margin-bottom: 15px;
-}
-
-.career-main .career-section .blog-section .blog-image {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	object-fit: cover;
-	border-radius: 10px;
-}
-
-.career-main .career-section .blog-section .read-more {
-	font-size: 1.05rem;
-	font-weight: 500;
-	color: var(--main-color);
-	text-decoration: none;
-}
-
-.career-main .career-section .blog-section .read-more:hover {
-	text-decoration: underline;
-}
-
-/* Container for the "Read More" Link */
-.career-main .career-section .blog-section .read-more-container {
-	margin-top: 40px;
-	padding: 20px;
-	background-color: var(--main-color);
-	color: #fff;
-	text-align: center;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.career-main .career-section .blog-section .read-more-container a {
-	font-size: 1.1rem;
-	color: #fff;
-	text-decoration: none;
-	font-weight: 600;
-}
-
-.career-main .career-section .blog-section .read-more-container a:hover {
-	text-decoration: underline;
-}
-
-/* Responsiveness for Blog Posts */
-@media (max-width: 768px) {
-	.career-main .career-section .blog-section .blog-title {
-		font-size: 1.3rem;
-	}
-	.career-main .career-section .blog-section .blog-summary {
-		font-size: 1rem;
-	}
-}
-
 /* Hobbies */
 
 .hobbies-main {
@@ -1690,6 +1602,162 @@ header.scrolled {
 	font-size: 0.95rem;
 	font-weight: 500;
 }
+
+/* Blog Section */
+
+/* Blog Section Styles */
+.hobbies-main .hobbies-section .blog-section {
+	margin-top: 60px;
+	padding: 40px 20px;
+	background: #ffffff;
+	border-radius: 12px;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	width: 85%; /* 50% width for desktop */
+	max-width: 1200px; /* Optional max-width for large screens */
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hobbies-main .hobbies-section .blog-section .blog-title {
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 25px;
+	color: var(--main-color);
+	text-align: center;
+	position: relative;
+}
+
+/* Underline Effect for Blog Title */
+.hobbies-main .hobbies-section .blog-section .blog-title::after {
+	content: "";
+	width: 80px;
+	height: 4px;
+	background: var(--main-color);
+	display: block;
+	margin: 8px auto 0;
+	border-radius: 2px;
+}
+
+/* Blog Post Styling */
+.hobbies-main .hobbies-section .blog-section .blog-post {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 40px;
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	background: #f9f9f9;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.hobbies-main .hobbies-section .blog-section .blog-post:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container */
+.hobbies-main .hobbies-section .blog-section .blog-image-container {
+	position: relative;
+	width: 100%;
+	padding-top: 56.25%; /* 16:9 Aspect Ratio */
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+/* Blog Images */
+.hobbies-main .hobbies-section .blog-section .blog-image {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	border-radius: 10px;
+	transition: transform 0.3s ease-in-out;
+}
+
+/* Subtle Image Zoom on Hover */
+.hobbies-main .hobbies-section .blog-section .blog-post:hover .blog-image {
+	transform: scale(1.05);
+}
+
+/* Blog Summary */
+.hobbies-main .hobbies-section .blog-section .blog-summary {
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.6;
+	color: #444;
+	text-align: justify;
+}
+
+/* Read More Link */
+.hobbies-main .hobbies-section .blog-section .read-more {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--main-color);
+	text-decoration: none;
+	display: inline-block;
+	margin-top: 10px;
+	transition: color 0.3s ease;
+}
+
+/* Read More Hover Effect */
+.hobbies-main .hobbies-section .blog-section .read-more:hover {
+	text-decoration: underline;
+	color: #d9534f;
+}
+
+/* Read More Container */
+.hobbies-main .hobbies-section .blog-section .read-more-container {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: var(--main-color);
+	color: #fff;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	transition: background 0.3s ease;
+}
+
+/* Read More Container Hover */
+.hobbies-main .hobbies-section .blog-section .read-more-container:hover {
+	background-color: #1fc833;
+}
+
+.hobbies-main .hobbies-section .blog-section .read-more-container a {
+	font-size: 1.1rem;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+	transition: text-decoration 0.3s ease;
+}
+
+.hobbies-main .hobbies-section .blog-section .read-more-container a:hover {
+	text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+	.hobbies-main .hobbies-section .blog-section {
+		width: 90%; /* 85% width for tablet and below */
+	}
+}
+
+@media (max-width: 768px) {
+	.hobbies-main .hobbies-section .blog-section {
+		padding: 30px 15px;
+		width: 90%; /* 85% width for mobile */
+	}
+	.hobbies-main .hobbies-section .blog-section .blog-title {
+		font-size: 1.6rem;
+	}
+	.hobbies-main .hobbies-section .blog-section .blog-summary {
+		font-size: 0.95rem;
+	}
+}
+
 
 /* Custom Text Selection */
 ::selection {
