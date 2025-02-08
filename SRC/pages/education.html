@@ -11,14 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
+    <style>
+        .study {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .study.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body>
-
-
+<body onload="revealOnLoad()">
     <header class="header" id="header">
         <a href="../../index.html" class="logo"><span class="main-icon"></span><span>Pujan</span></a>
-
         <div class="navbar">
             <a href="../../index.html">Home</a>
             <a href="./skills.html">Skills</a>
@@ -27,7 +36,6 @@
             <a href="./hobbies.html">Hobbies</a>
             <a href="./testimonials.html">Testimonials</a>
         </div>
-
         <div class="main">
             <a href="./contact.html" class="user main-items"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
             <div class="main-items menu-icon-container" id="menu-icon-js">
@@ -35,7 +43,6 @@
             </div>
         </div>
     </header>
-
 
     <div class="page">
         <main class="education-main">
@@ -49,7 +56,7 @@
                         <div class="header">Bachelor's Degree</div>
                         <div class="name">Nepal Commerce Campus</div>
                         <div class="year">2019-2025</div>
-                        <div class="text">I studied Bachelors degree in information and technology (BIM) and developed strong programming skills, working with languages like PHP, Java, and SQL.</div>
+                        <div class="text">I studied Bachelors degree in information and technology (BIM)...</div>
                     </div>
                 </div>
                 <div class="study second">
@@ -61,8 +68,7 @@
                         <div class="header">Higher Secondary Degree</div>
                         <div class="name">VS  School</div>
                         <div class="year">2017-2019</div>
-                        <div class="text">I studied Management and completed higher
-                            secondary (+2) majoring in Computer Science. And built a solid foundation in computer systems, algorithms, and data structures </div>
+                        <div class="text">I studied Management and completed higher secondary...</div>
                     </div>
                 </div>
                 <div class="study third">
@@ -74,19 +80,15 @@
                         <div class="header">Lower Secondary Degree</div>
                         <div class="name">Om Secondary School</div>
                         <div class="year">Completed Year 2016</div>
-                        <div class="text">I joined this school at the elementary level and completed
-                            my lower secondary and secondary education in regular subjects.</div>
+                        <div class="text">I joined this school at the elementary level...</div>
                     </div>
                 </div>
             </div>
         </main>
         <footer class="footer">
-            <div class="left">
-                &copy; 2023 • Pujan Joshi • All Rights Reserved
-            </div>
+            <div class="left">&copy; 2023 • Pujan Joshi • All Rights Reserved</div>
             <div class="right">
-                <div class="social"><a href="https://www.facebook.com/PujanJoci" target="_blank"><i
-                            class="fa-brands fa-facebook"></i></a></div>
+                <div class="social"><a href="https://www.facebook.com/PujanJoci" target="_blank"><i class="fa-brands fa-facebook"></i></a></div>
                 <div class="social"><a href="https://www.instagram.com/pujan_joci/" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
                 <div class="social"><a href="https://www.linkedin.com/in/pujan-joshi-b811071a1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
                 <div class="social"><a href="https://github.com/pujanjoci" target="_blank"><i class="fa-brands fa-github"></i></a></div>
@@ -94,14 +96,16 @@
         </footer>
     </div>
 
-
-
-
-
-    <div class="nav-touch-close" id="nav-tc-js"></div>
-
     <script type="text/javascript" src="../script/script.js"></script>
-
+    <script>
+        function revealOnLoad() {
+            const studies = document.querySelectorAll(".study");
+            studies.forEach((study, index) => {
+                setTimeout(() => {
+                    study.classList.add("show");
+                }, index * 500);
+            });
+        }
+    </script>
 </body>
-
 </html>
