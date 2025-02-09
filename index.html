@@ -10,6 +10,43 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <style>
+             /* Centering the text */
+        .gallery-section-text {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+            margin-top: 2vh;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Styling the link */
+        .gallery-section-text a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .gallery-section-text a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -55,6 +92,11 @@
                 </div>
             </div>
         </section>
+
+        <p class="gallery-section-text">
+            As I take various pictures of different things, you can view them 
+            <a href="SRC/pages/gallery.html">here</a>.
+        </p>
 
         <footer class="footer">
             <div class="left">

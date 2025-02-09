@@ -1251,7 +1251,7 @@ header.scrolled {
 }
 
 .gallery-main .gallery-section .column .header .text {
-	min-width: 151px;
+	min-width: 181px;
 	color: var(--main-color);
 	border: 2px solid var(--main-color);
 	border-radius: 10px;
