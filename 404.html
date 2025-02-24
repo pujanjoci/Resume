@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Brick Breaker Game</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 20px 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    canvas {
+      border: 3px solid #fff;
+      background-color: #333;
+      display: block;
+    }
+
+    .refresh-button {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .refresh-button:hover {
+      background-color: #45a049;
+    }
+
+    .instructions {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <h1>404 Status Error: No Page Found</h1>
+  <p>There is no page as "<span id="url"></span>", but let's find this page instead.</p>
+  <p class="instructions">Let's Play a Game!<br>Move the mouse or use the arrow keys to play.</p>
+  <p>Score: <span id="score">0</span> | Lives: <span id="lives">3</span> | Level: <span id="level">1</span> | High Score: <span id="highScore">0</span></p>
+
+  <canvas id="gameCanvas" width="480" height="320"></canvas>
+  <button class="refresh-button" id="refreshButton" onclick="refreshPage()">Refresh Page</button>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const refreshButton = document.getElementById('refreshButton');
+    const urlDisplay = document.getElementById('url');
+    const scoreDisplay = document.getElementById('score');
+    const livesDisplay = document.getElementById('lives');
+    const levelDisplay = document.getElementById('level');
+    const highScoreDisplay = document.getElementById('highScore');
+    
+    let ballRadius = 10;
+    let x = canvas.width / 2;
+    let y = canvas.height - 30;
+    let dx = 2; // Horizontal velocity
+    let dy = -2; // Vertical velocity
+    let paddleHeight = 10;
+    let paddleWidth = 100;
+    let paddleX = (canvas.width - paddleWidth) / 2;
+    let rightPressed = false;
+    let leftPressed = false;
+    let brickRowCount = 3;
+    let brickColumnCount = 5;
+    let brickWidth = 75;
+    let brickHeight = 20;
+    let brickPadding = 10;
+    let brickOffsetTop = 30;
+    let brickOffsetLeft = 30;
+    let bricks = [];
+    let score = 0;
+    let lives = 3;
+    let level = 1;
+    let gameStarted = true;
+
+    // Load the high score from localStorage
+    let highScore = localStorage.getItem('highScore') ? parseInt(localStorage.getItem('highScore')) : 0;
+    highScoreDisplay.textContent = highScore;
+
+    function createBricks() {
+      bricks = [];
+      for (let c = 0; c < brickColumnCount; c++) {
+        bricks[c] = [];
+        for (let r = 0; r < brickRowCount; r++) {
+          let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+          let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+          bricks[c][r] = { x: brickX, y: brickY, status: 1 };
+        }
+      }
+    }
+
+    createBricks();
+
+    function drawBricks() {
+      for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+          if (bricks[c][r].status === 1) {
+            ctx.fillStyle = "#ffcc00";
+            ctx.fillRect(bricks[c][r].x, bricks[c][r].y, brickWidth, brickHeight);
+          }
+        }
+      }
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+      ctx.fillStyle = "#ff0000";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawPaddle() {
+      ctx.fillStyle = "#00ff00";
+      ctx.fillRect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    }
+
+    function collisionDetection() {
+      for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+          let b = bricks[c][r];
+          if (b.status === 1) {
+            if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+              dy = -dy; // Reverse the vertical direction
+              b.status = 0; // Mark the brick as broken
+              score++;
+              scoreDisplay.textContent = score;
+            }
+          }
+        }
+      }
+    }
+
+    function nextLevel() {
+      if (score === brickRowCount * brickColumnCount) {
+        level++;
+        levelDisplay.textContent = level;
+        ballRadius += 1;  // Increase ball size for fun!
+        dx += 0.5; // Increase ball speed
+        dy -= 0.5; // Increase ball speed
+        brickRowCount++;
+        createBricks();  // Reset the brick layout
+        x = canvas.width / 2;
+        y = canvas.height - 30;
+      }
+    }
+
+    function updateHighScore() {
+      if (score > highScore) {
+        highScore = score;
+        highScoreDisplay.textContent = highScore;
+        localStorage.setItem('highScore', highScore);  // Save new high score to localStorage
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBricks();
+      drawBall();
+      drawPaddle();
+      collisionDetection();
+
+      // Ball collision with walls
+      if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+        dx = -dx; // Reverse horizontal direction
+      }
+
+      // Ball collision with top wall
+      if (y + dy < ballRadius) {
+        dy = -dy; // Reverse vertical direction
+      }
+
+      // Ball collision with paddle
+      if (y + dy > canvas.height - ballRadius - paddleHeight) {
+        if (x > paddleX && x < paddleX + paddleWidth) {
+          dy = -dy; // Reverse vertical direction
+          // Add dynamic horizontal movement based on where the ball hits the paddle
+          let hitPos = (x - (paddleX + paddleWidth / 2)) / (paddleWidth / 2);
+          dx = hitPos * 4; // Adjust horizontal velocity based on hit position
+        } else if (y + dy > canvas.height - ballRadius) {
+          // Ball missed the paddle
+          lives--;
+          livesDisplay.textContent = lives;
+          if (lives === 0) {
+            updateHighScore();
+            setTimeout(() => {
+              refreshPage();
+            }, 100); // Delay the refresh to ensure high score is saved
+          } else {
+            // Reset ball position
+            x = canvas.width / 2;
+            y = canvas.height - 30;
+            dx = 2;
+            dy = -2;
+            paddleX = (canvas.width - paddleWidth) / 2;
+          }
+        }
+      }
+
+      // Update ball position
+      x += dx;
+      y += dy;
+
+      // Paddle control with arrow keys
+      if (rightPressed && paddleX < canvas.width - paddleWidth) {
+        paddleX += 7;
+      } else if (leftPressed && paddleX > 0) {
+        paddleX -= 7;
+      }
+
+      nextLevel(); // Check if all bricks are cleared, then generate new level
+
+      requestAnimationFrame(draw);
+    }
+
+    // Mouse control for paddle
+    document.addEventListener("mousemove", (event) => {
+      if (gameStarted) {
+        let relativeX = event.clientX - canvas.offsetLeft;
+        if (relativeX > 0 && relativeX < canvas.width) {
+          paddleX = relativeX - paddleWidth / 2;
+        }
+      }
+    });
+
+    // Keyboard control for paddle
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Right" || event.key === "ArrowRight") rightPressed = true;
+      else if (event.key === "Left" || event.key === "ArrowLeft") leftPressed = true;
+    });
+
+    document.addEventListener("keyup", (event) => {
+      if (event.key === "Right" || event.key === "ArrowRight") rightPressed = false;
+      else if (event.key === "Left" || event.key === "ArrowLeft") leftPressed = false;
+    });
+
+    function refreshPage() {
+      window.location.href = "index.html";
+    }
+
+    urlDisplay.textContent = window.location.pathname;
+    draw();
+  </script>
+</body>
+</html>
