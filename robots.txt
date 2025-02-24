@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pujan-joshi.com.np/sitemap.xml
