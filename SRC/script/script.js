@@ -42,7 +42,7 @@ const formSection = document.querySelector(".form-section");
 const contactSubmitAfter = document.querySelector(".contact-submit-after");
 const csaOK = document.querySelector(".csa-ok");
 
-const contactForm = document.querySelector(".contact-form");
+const contactForm = document.getElementById("contact-form");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("message");
@@ -98,7 +98,7 @@ function lockSubmitButton(timeLeft) {
             clearInterval(interval);
             unlockSubmitButton();
         }
-    }, 60000);
+    }, 600000);
 }
 
 function unlockSubmitButton() {
@@ -111,7 +111,8 @@ function unlockSubmitButton() {
 
 // Validate form fields
 function validateForm(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission
+
     let isValid = true;
     let nameIsValid = true;
     let emailIsValid = true;
@@ -124,9 +125,7 @@ function validateForm(event) {
 
     if (emailInput.value.trim() === "" || !isValidEmail(emailInput.value)) {
         isValid = false;
-        if (emailInput.value.trim() !== "" && !isValidEmail(emailInput.value)) {
-            emailIsValid = false;
-        }
+        emailIsValid = false;
     }
 
     if (messageInput.value.trim() === "") {
@@ -141,22 +140,49 @@ function validateForm(event) {
             errorDiv.classList.remove("error-show");
             emailErrorDiv.classList.add("error-show");
         }
-    } else {
-        emailErrorDiv.classList.remove("error-show");
-        errorDiv.classList.remove("error-show");
-        contactButton.classList.add("loading");
-        contactLoad.classList.add("show");
-        submitText.classList.add("hide");
-
-        // Save the time and lock the button
-        localStorage.setItem("formTime", Date.now());
-        lockSubmitButton(LOCK_DURATION);
-
-        setTimeout(() => {
-            sendMail();
-        }, 2000);
+        return;
     }
+
+    // Show loading animation
+    errorDiv.classList.remove("error-show");
+    emailErrorDiv.classList.remove("error-show");
+    contactButton.classList.add("loading");
+    contactLoad.classList.add("show");
+    submitText.classList.add("hide");
+
+    // Lock submit button
+    localStorage.setItem("formTime", Date.now());
+    lockSubmitButton(LOCK_DURATION);
+
+    // Send form data
+    let formData = {
+        name: nameInput.value,
+        email: emailInput.value,
+        message: messageInput.value
+    };
+
+    fetch(contactForm.action, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (response.ok) {
+            sendMail(); // Show success message after submission
+            contactForm.reset(); // Clear the form
+        } else {
+            throw new Error("Form submission failed.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error submitting form. Please try again later.");
+    });
 }
+
 
 // Email validation function
 function isValidEmail(email) {
@@ -165,7 +191,10 @@ function isValidEmail(email) {
 }
 
 if (contactForm) {
-    contactForm.addEventListener("submit", validateForm);
+    contactForm.addEventListener("submit", (event) => {
+        console.log("Form submission detected, The code worked...");
+        validateForm(event);
+    });
 }
 
 // Unlock the button after the cooldown period
