@@ -8,31 +8,43 @@
     <meta name="keywords" content="Web Designer, Web Developer, Graphic Designer, Video Editor, Portfolio">
     <meta name="author" content="Pujan Joshi">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="Pujan Joshi - Portfolio">
     <meta property="og:description" content="A Web Designer and Developer with a passion for crafting engaging and user-friendly websites.">
     <meta property="og:image" content="./Assets/portfolio.webp">
     <meta property="og:url" content="https://pujan-joshi.com-com">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pujan Joshi - Portfolio">
     <meta name="twitter:description" content="A Web Designer and Developer passionate about creating user-friendly experiences.">
-    <meta name="twitter:image" content="./Assets/profile.webp">
-    
+    <meta name="twitter:image" content="./Assets/pujan_joshi_profile.webp">
+
     <title>Pujan Joshi - Official Site</title>
 
     <link rel="canonical" href="https://pujan-joshi.com.np/index.html" />
     <link rel="stylesheet" type="text/css" href="SRC/style/style.css">
     <link rel="image_src" href="./Assets/portfolio.webp">
     <link rel="icon" href="Assets/favicons/favicon.webp" type="image/webp" sizes="32x32">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
     <style>
+        /* Visually hidden but accessible h1 */
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            border: 0;
+        }
+
         /* Centering the text */
         .gallery-section-text {
             text-align: center;
@@ -72,7 +84,7 @@
 
 <body>
 
-<!-- Hello -->
+    <!-- Navigation/Header -->
     <header class="header" id="header">
         <a href="index.html" class="logo"><span class="main-icon"></span><span>Pujan</span></a>
 
@@ -86,25 +98,27 @@
         </div>
 
         <div class="main">
-            <a href="SRC/pages/contact.html" class="user main-items"><i class="fas fa-envelope cm-icon"></i>Contact
-                Me</a>
+            <a href="SRC/pages/contact.html" class="user main-items"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
             <div class="main-items menu-icon-container" id="menu-icon-js">
                 <div class="bx bx-menu" id="menu-icon"></div>
             </div>
         </div>
     </header>
 
+    <!-- ✅ SEO-boosting H1 tag -->
+    <h1 class="visually-hidden">Pujan Joshi – Web Designer, Developer & Content Creator Portfolio</h1>
+
     <div class="page">
         <section class="about" id="about">
             <div class="about-content">
                 <div class="column right">
-                    <img src="Assets/profile.webp" alt="">
+                    <img src="Assets/pujan_joshi_profile.webp" alt="Pujan Joshi Web Designer Profile">
                 </div>
                 <div class="column left">
-                    <div class="text">I'm Pujan Joshi and </br>I'm a <span id="typed" class="iAm"></span></div>
+                    <div class="text">I'm Pujan Joshi and <br>I'm a <span id="typed" class="iAm"></span></div>
                     <p>
-                        A Web Designer and a Developer with passion and little experience here to craft engaging and user-friendly
-                        websites. I am dedicated to continuously learning and growing in the field of web development and design.
+                        A Web Designer and a Developer with passion and little experience here to craft engaging and user-friendly websites.
+                        I am dedicated to continuously learning and growing in the field of web development and design.
                     </p>
                     <div class="buttons">
                         <a href="/Assets/resume/resume.pdf">View CV</a>
@@ -124,8 +138,7 @@
                 &copy; 2023 • Pujan Joshi • All Rights Reserved
             </div>
             <div class="right">
-                <div class="social"><a href="https://www.facebook.com/PujanJoci" alt="facebook_profile" target="_blank"><i
-                            class="fa-brands fa-facebook"></i></a></div>
+                <div class="social"><a href="https://www.facebook.com/PujanJoci" alt="facebook_profile" target="_blank"><i class="fa-brands fa-facebook"></i></a></div>
                 <div class="social"><a href="https://www.instagram.com/pujan_joci/" alt="instagram_profile" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
                 <div class="social"><a href="https://www.linkedin.com/in/pujan-joshi-b811071a1/" alt="linkedin_profile" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
                 <div class="social"><a href="https://github.com/pujanjoci" alt="github_profile" target="_blank"><i class="fa-brands fa-github"></i></a></div>
@@ -142,12 +155,11 @@
         var typed = new Typed('#typed', {
             strings: ['Web Designer', 'Web Developer', 'Graphic Designer', 'Video Editor', 'Gamer'],
             typeSpeed: 55,
-            loop: true, // Enables infinite looping
-            backSpeed: 10, // Adjust speed for deleting text
-            backDelay: 1000, // Pause before typing the next string
+            loop: true,
+            backSpeed: 10,
+            backDelay: 1000,
         });
     </script>
-    
 
 </body>
 
