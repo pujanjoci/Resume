@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap Viewer - Pujan Joshi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #6a11cb;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .description {
+            text-align: center;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .page-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-image-container {
+            position: relative;
+            height: 160px;
+            background: #f5f5f5;
+            border-bottom: 3px solid #6a11cb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .card-image-placeholder {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-title {
+            color: #6a11cb;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .page-url {
+            display: block;
+            color: #2575fc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+            font-size: 0.9rem;
+        }
+        
+        .page-url:hover {
+            text-decoration: underline;
+        }
+        
+        .image-meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .image-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            font-size: 0.8rem;
+        }
+        
+        .image-list li {
+            margin-bottom: 0.3rem;
+            word-break: break-all;
+        }
+        
+        .image-list a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        
+        .image-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .page-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .priority {
+            font-weight: 600;
+            color: #6a11cb;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .sitemap-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Pages</h1>
+        <p class="description">Explore all pages available on pujan-joshi.com.np</p>
+        
+        <div class="sitemap-grid">
+            <!-- Homepage -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <img src="https://pujan-joshi.com.np/Assets/pujan_joshi_profile.webp" alt="Pujan Joshi" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Homepage</h3>
+                    <a href="https://pujan-joshi.com.np/" class="page-url">https://pujan-joshi.com.np/</a>
+                    <div class="image-meta">Associated Images:</div>
+                    <ul class="image-list">
+                        <li><a href="https://pujan-joshi.com.np/Assets/pujan_joshi_profile.webp" target="_blank">pujan_joshi_profile.webp</a></li>
+                    </ul>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">1.0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Index Page -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <img src="https://pujan-joshi.com.np/Assets/pujan_joshi_profile.webp" alt="Pujan Joshi" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Index Page</h3>
+                    <a href="https://pujan-joshi.com.np/index.html" class="page-url">https://pujan-joshi.com.np/index.html</a>
+                    <div class="image-meta">Associated Images:</div>
+                    <ul class="image-list">
+                        <li><a href="https://pujan-joshi.com.np/Assets/pujan_joshi_profile.webp" target="_blank">pujan_joshi_profile.webp</a></li>
+                    </ul>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">1.0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <div class="card-image-placeholder">No Image</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Skills</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/skills.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/skills.html</a>
+                    <div class="image-meta">No associated images</div>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.8</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <img src="https://pujan-joshi.com.np/Assets/education/ncc.jpg" alt="Education" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Education</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/education.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/education.html</a>
+                    <div class="image-meta">Associated Images:</div>
+                    <ul class="image-list">
+                        <li><a href="https://pujan-joshi.com.np/Assets/education/ncc.jpg" target="_blank">ncc.jpg</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/education/vs.jpg" target="_blank">vs.jpg</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/education/om.jpg" target="_blank">om.jpg</a></li>
+                    </ul>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.8</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Career -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <img src="https://pujan-joshi.com.np/Assets/career/portfolio.png" alt="Career" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Career</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/career.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/career.html</a>
+                    <div class="image-meta">Associated Images:</div>
+                    <ul class="image-list">
+                        <li><a href="https://pujan-joshi.com.np/Assets/career/portfolio.png" target="_blank">portfolio.png</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/career/houselocater.png" target="_blank">houselocater.png</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/career/blogsite.png" target="_blank">blogsite.png</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/career/clother.png" target="_blank">clother.png</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/career/school.png" target="_blank">school.png</a></li>
+                    </ul>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.8</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hobbies -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <img src="https://pujan-joshi.com.np/Assets/hobbies/hangout.png" alt="Hobbies" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Hobbies</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/hobbies.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/hobbies.html</a>
+                    <div class="image-meta">Associated Images:</div>
+                    <ul class="image-list">
+                        <li><a href="https://pujan-joshi.com.np/Assets/hobbies/hangout.png" target="_blank">hangout.png</a></li>
+                        <li><a href="https://pujan-joshi.com.np/Assets/hobbies/coding.png" target="_blank">coding.png</a></li>
+                    </ul>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.7</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <div class="card-image-placeholder">No Image</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Testimonials</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/testimonials.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/testimonials.html</a>
+                    <div class="image-meta">No associated images</div>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.7</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <div class="card-image-placeholder">No Image</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Contact</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/contact.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/contact.html</a>
+                    <div class="image-meta">No associated images</div>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.9</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resume -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <div class="card-image-placeholder">No Image</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Resume</h3>
+                    <a href="https://pujan-joshi.com.np/Assets/resume/resume.pdf" class="page-url">https://pujan-joshi.com.np/Assets/resume/resume.pdf</a>
+                    <div class="image-meta">No associated images</div>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.6</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="page-card">
+                <div class="card-image-container">
+                    <div class="card-image-placeholder">No Image</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="page-title">Gallery</h3>
+                    <a href="https://pujan-joshi.com.np/SRC/pages/gallery.html" class="page-url">https://pujan-joshi.com.np/SRC/pages/gallery.html</a>
+                    <div class="image-meta">No associated images</div>
+                    <div class="page-meta">
+                        <span>Updated: 2024-02-24</span>
+                        <span class="priority">0.7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Pujan Joshi. All rights reserved.</p>
+    </footer>
+</body>
+</html>
